@@ -40,7 +40,7 @@
 
             <div>
                 <label class="block text-gray-700">Username:</label>
-                <input type="text" id="username" name="username" readonly class="w-full p-2 border rounded-md bg-gray-100">
+                <input type="text" id="usernameForm" name="usernameForm" readonly class="w-full p-2 border rounded-md bg-gray-100">
             </div>
 
             <div>
@@ -52,17 +52,14 @@
                 <label class="block text-gray-700">Twitter ID:</label>
                 <input type="text" id="twitterId" name="twitterId" readonly class="w-full p-2 border rounded-md bg-gray-100">
             </div>
-
-            <!-- <div>
-                <label class="block text-gray-700">Wallet Address:</label>
-                <input type="text" id="walletAddressInput" name="walletAddress" readonly class="w-full p-2 border rounded-md bg-gray-100">
-            </div> -->
-            <p class="text-lg font-medium text-gray-700">
-                Public Key: <span id="publicKey" class="font-semibold text-purple-600"></span>
-            </p>
-            <p class="text-lg font-medium text-gray-700">
-                Private Key: <span id="privateKey" class="font-semibold text-red-600"></span>
-            </p>
+            <div>
+                <label class="block text-gray-700">Public Key:</label>
+                <input type="text" id="jumla" name="jumla" readonly class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+            <div>
+                <label class="block text-gray-700">Private Key:</label>
+                <input type="text" id="privateKey" name="privateKey" readonly class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
             
             <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Submit</button>
         </form>

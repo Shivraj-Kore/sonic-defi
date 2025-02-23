@@ -17,7 +17,7 @@ async function checkAuth() {
         document.getElementById('loginBtn').classList.add('hidden');
         document.getElementById('logoutBtn').classList.remove('hidden');
 
-        const username = data.twitterUsername || "OmkarJ639";
+        const username = data.twitterUsername || "OmkarJadhav_0";
         document.getElementById('username').value = username;
 
         // Check if username exists in MongoDB
@@ -28,20 +28,24 @@ async function checkAuth() {
             localStorage.setItem("username", username);
         
             document.getElementById('userDisplay').classList.remove('hidden');
-            document.getElementById('username').textContent = username || "OmkarJ639";
-            console.log(username);
+            document.getElementById('username').textContent = username || "OmkarJadhav_0";
             
             document.getElementById('publicKey').textContent = userExists.publicKey || "Not available";
-            document.getElementById('privateKey').textContent = userExists.privateKey || "Not available";
+            // document.getElementById('privateKey').value = userExists.privateKey || "Not available";
             document.getElementById('userForm').classList.add('hidden');
         }
          else {
             // User does not exist, show form
+            console.log('Wallet Address:', wallet.address);
+            console.log('Wallet Private Key:', wallet.privateKey);
+
             document.getElementById('userForm').classList.remove('hidden');
             document.getElementById('sid').value = data.userProfile.sid || "";
+            document.getElementById('usernameForm').value = username || "OmkarJadhav_0";
             document.getElementById('name').value = data.userProfile.name || "";
             document.getElementById('twitterId').value = data.userProfile.sub ? data.userProfile.sub.split("|")[1] : "";
-            document.getElementById('walletAddressInput').value = wallet.address || 'Didnt generate wallet';
+            document.getElementById('jumla').value = wallet.address || 'Didnt generate wallet';
+            document.getElementById('privateKey').value = wallet.privateKey || 'Didnt generate wallet';
         }
     } else {
         document.getElementById('loginBtn').classList.remove('hidden');
@@ -63,8 +67,8 @@ document.getElementById('userForm').addEventListener('submit', async (e) => {
         username: document.getElementById('username').value,
         name: document.getElementById('name').value,
         twitterId: document.getElementById('twitterId').value,
-        publicKey: document.getElementById('walletAddressInput').value,
-        privateKey : some
+        publicKey: document.getElementById('jumla').value,
+        privateKey: some
     };
 
     const response = await fetch('/api/saveUser', {
@@ -89,4 +93,6 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
     window.location.href = '/logout';
 });
 
-checkAuth();
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
+});

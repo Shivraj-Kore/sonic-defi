@@ -11,7 +11,7 @@ router.get('/api/user', async function (req, res) {
     }
 
     const userProfile = req.oidc.user || {};
-    let twitterUsername = "OmkarJ639";
+    let twitterUsername = "OmkarJadhav_0";
 
     if (userProfile.sub && userProfile.sub.startsWith("twitter|")) {
         const twitterId = userProfile.sub.split("|")[1];
@@ -55,8 +55,8 @@ router.post('/api/saveUser', async (req, res) => {
 
       const newUser = new User({
           sid,
-          name,
           username,
+          name,
           twitterId,
           publicKey,
           privateKey
