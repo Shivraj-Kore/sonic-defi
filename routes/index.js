@@ -3,7 +3,7 @@ const { requiresAuth } = require('express-openid-connect');
 const axios = require('axios');
 const User = require('../models/User'); 
 const router = express.Router();
-const usernameCache = {}; // In-memory cache
+const usernameCache = {};
 
 router.get('/api/user', async function (req, res) {
     if (!req.oidc.isAuthenticated()) {
@@ -11,7 +11,7 @@ router.get('/api/user', async function (req, res) {
     }
 
     const userProfile = req.oidc.user || {};
-    let twitterUsername = "stev3raj_";
+    let twitterUsername = "OmkarJ639";
 
     if (userProfile.sub && userProfile.sub.startsWith("twitter|")) {
         const twitterId = userProfile.sub.split("|")[1];
@@ -51,14 +51,15 @@ router.get('/api/user', async function (req, res) {
 
 router.post('/api/saveUser', async (req, res) => {
   try {
-      const { sid, name, username, twitterId, walletAddress } = req.body;
+      const { sid, name, username, twitterId, publicKey, privateKey } = req.body;
 
       const newUser = new User({
           sid,
           name,
           username,
           twitterId,
-          walletAddress
+          publicKey,
+          privateKey
       });
 
       await newUser.save();
@@ -70,20 +71,25 @@ router.post('/api/saveUser', async (req, res) => {
 });
 
 router.get('/api/checkUser', async (req, res) => {
-  try {
-      const { username } = req.query;
-      const user = await User.findOne({ username });
+    try {
+        const { username } = req.query;
+        const user = await User.findOne({ username });
 
-      if (user) {
-          res.json({ exists: true, walletAddress: user.walletAddress });
-      } else {
-          res.json({ exists: false });
-      }
-  } catch (error) {
-      console.error("Error checking user:", error);
-      res.status(500).json({ message: "Error checking user" });
-  }
+        if (user) {
+            res.json({ 
+                exists: true,
+                username: user.username,
+                publicKey: user.publicKey
+            });
+        } else {
+            res.json({ exists: false });
+        }
+    } catch (error) {
+        console.error("Error checking user:", error);
+        res.status(500).json({ message: "Error checking user" });
+    }
 });
+
 
 
 router.get('/login', (req, res) => {

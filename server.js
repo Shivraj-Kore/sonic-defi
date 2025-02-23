@@ -9,6 +9,8 @@ const mongoose = require('mongoose')
 dotenv.config();
 
 const app = express();
+const cors = require('cors');
+app.use(cors()); 
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
