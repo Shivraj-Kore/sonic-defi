@@ -1,2 +1,32 @@
 node_modules
 .env
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+.env/
+
+# VS Code settings
+.vscode/
+
+# Environment variables
+*.env
+
+# macOS
+.DS_Store
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
