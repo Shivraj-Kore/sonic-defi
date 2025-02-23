@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth0 Twitter Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">Sonic DeFi</h1>
+            <div>
+                <button id="loginBtn" class="hidden bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Login</button>
+                <button id="logoutBtn" class="hidden bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg max-w-lg">
+        <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">User Details</h2>
+
+        <!-- Username Display -->
+        <div id="userDisplay" class="hidden text-center">
+            <p class="text-lg font-medium text-gray-700">Username: <span id="twitterUsername" class="font-semibold text-blue-600"></span></p>
+            <p class="text-lg font-medium text-gray-700">Wallet Address: <span id="walletAddress" class="font-semibold text-green-600"></span></p>
+        </div>
+
+        <!-- User Form (Shown if user does not exist) -->
+        <form id="userForm" class="hidden space-y-4">
+            <div>
+                <label class="block text-gray-700">SID:</label>
+                <input type="text" id="sid" name="sid" readonly class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+
+            <div>
+                <label class="block text-gray-700">Username:</label>
+                <input type="text" id="username" name="username" readonly class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+
+            <div>
+                <label class="block text-gray-700">Name:</label>
+                <input type="text" id="name" name="name" readonly class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+
+            <div>
+                <label class="block text-gray-700">Twitter ID:</label>
+                <input type="text" id="twitterId" name="twitterId" readonly class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+
+            <div>
+                <label class="block text-gray-700">Wallet Address:</label>
+                <input type="text" id="walletAddressInput" name="walletAddress" required class="w-full p-2 border rounded-md">
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
